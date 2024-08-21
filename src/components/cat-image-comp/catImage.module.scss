@@ -1,0 +1,13 @@
+@import "@/css/_vars";
+
+.catImage {
+  object-fit: cover;
+  width: $imagesWidth;
+  height: $imagesHeight;
+  border-radius: 10px;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    transform: scale(1.1, 1.1) rotate(0.01turn);
+  }
+}

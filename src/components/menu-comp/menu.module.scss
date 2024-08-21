@@ -1,0 +1,30 @@
+.nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  font-weight: 500;
+  grid-area: nav;
+  margin: 1.5rem;
+  gap: 20px;
+  align-items: baseline;
+
+  a {
+    text-align: center;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.homeLink {
+  justify-self: right;
+}
+
+.breedsLink {
+  justify-self: center;
+}
+
+.favouritesLink {
+  justify-self: left;
+}
