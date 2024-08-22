@@ -1,5 +1,11 @@
 @import "@/css/_vars";
 
+.figure {
+  figcaption {
+    text-align: center;
+  }
+}
+
 .catImage {
   object-fit: cover;
   width: $imagesWidth;

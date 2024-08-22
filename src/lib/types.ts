@@ -1,4 +1,11 @@
 export type ORDER = "ASC" | "DESC" | "RAND";
+
+interface IMAGE_TYPE {
+  id: string;
+  width: number;
+  height: number;
+  url: string;
+}
 export interface BREED {
   weight: {
     metric: string;
@@ -37,20 +44,22 @@ export interface BREED {
   wikipedia_url: string;
   hypoallergenic: number;
   reference_image_id: string;
+  image?: IMAGE_TYPE;
 }
 
-export interface CAT_IMAGE {
-  id: string;
-  width: number;
-  height: number;
-  url: string;
+export interface CAT_IMAGE extends IMAGE_TYPE {
   breeds?: BREED[];
 }
 
 export interface IMAGE_LIST_PROPS {
-  catImages: CAT_IMAGE[];
+  images: CAT_IMAGE[] | BREED[];
 }
 
 export interface CAT_IMAGE_PROPS {
-  catImage: CAT_IMAGE;
+  imageAttr: CAT_IMAGE | BREED;
+}
+
+export interface MAIN_SECTION_PROPS {
+  title: string;
+  children: JSX.Element;
 }

@@ -5,6 +5,7 @@ const API_KEY = process.env.API_KEY;
 
 const THE_CAT_API_URL = "https://api.thecatapi.com/v1";
 const THE_CAT_API_URL_FAVOURITES = `${THE_CAT_API_URL}/favourites`;
+const THE_CAT_API_URL_BREEDS = `${THE_CAT_API_URL}/breeds`;
 const THE_CAT_API_URL_IMAGES = `${THE_CAT_API_URL}/images`;
 const THE_CAT_API_SEARCH_URL = `${THE_CAT_API_URL_IMAGES}/search`;
 
@@ -24,6 +25,18 @@ export async function getCatImages(
   }
 
   const res = await fetch(url);
+
+  return res.json();
+}
+
+export async function getCatBreeds() {
+  //const url = `${THE_CAT_API_URL_BREEDS}?limit=1`;
+  const res = await fetch(THE_CAT_API_URL_BREEDS, {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": `${API_KEY}`,
+    },
+  });
 
   return res.json();
 }

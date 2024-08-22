@@ -1,16 +1,15 @@
+import { IMAGE_LIST_PROPS } from "@/lib/types";
 import CatImage from "../cat-image-comp/catImage";
 import styles from "./imageList.module.scss";
-import { getCatImages } from "@/lib/data";
 
-export default async function ImageList() {
-  const catImages = await getCatImages(10, "RAND", 0, true);
-
+export default async function ImageList({ images }: IMAGE_LIST_PROPS) {
   return (
     <ul className={styles.imageList}>
-      {catImages.map((catImage) => {
+      {images.map((imageAttr) => {
+        //imageAttr is either a cat image object or a breed object
         return (
-          <li key={catImage.id}>
-            <CatImage catImage={catImage} />
+          <li key={imageAttr.id}>
+            <CatImage imageAttr={imageAttr} />
           </li>
         );
       })}
