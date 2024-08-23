@@ -20,9 +20,7 @@ export default function Modal({ title, children }: MODAL_PROPS) {
     //case 1
     (imageId && pathname === "/") ||
     //case 2
-    (breedId && pathname === "/breeds/");
-
-  const routeId = imageId ? imageId : breedId;
+    (breedId && pathname === "/breeds");
 
   useEffect(() => {
     if (showModal) {

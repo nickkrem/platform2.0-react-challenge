@@ -50,7 +50,7 @@ export interface BREED {
 export interface CAT_IMAGE extends IMAGE_TYPE {
   alt?: string;
   caption?: string;
-  routeId?: string;
+  routePath?: string;
   breeds?: BREED[];
 }
 

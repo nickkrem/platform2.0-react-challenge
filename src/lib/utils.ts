@@ -9,7 +9,7 @@ import imageNotAvailable from "public/no-image-available.png";
  */
 export function getCatImageFromObj(obj: CAT_IMAGE | BREED) {
   let catImage = obj as CAT_IMAGE;
-  catImage["routeId"] = catImage.id;
+  catImage["routePath"] = `/?imageId=${catImage.id}`;
 
   //Check if imageDetails is a BREED object. If so, get it's property image
   // We distinguish betwenn objects by the "name" property, which only exists
@@ -30,7 +30,7 @@ export function getCatImageFromObj(obj: CAT_IMAGE | BREED) {
 
     catImage["alt"] = breed.name;
     catImage["caption"] = breed.name;
-    catImage["routeId"] = breed.id;
+    catImage["routePath"] = `/breeds/?breedId=${breed.id}`;
   }
 
   return catImage;

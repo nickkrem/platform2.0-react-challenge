@@ -17,10 +17,11 @@ export default async function Home({ searchParams }: HOME_PAGE_PROPS) {
       <MainSection title="Check out our cat images">
         <ImageList images={catImages} />
       </MainSection>
-
+      {/* Modal initially is hidden. See Modal component */}
       <Modal title="Breed Details">
         <>
           {imageId && (
+            // TODO: A better loading skeleton
             <Suspense fallback={<div>Loading...</div>}>
               <ImageDetails id={imageId} />
             </Suspense>

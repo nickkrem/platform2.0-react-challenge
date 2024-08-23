@@ -8,7 +8,7 @@ export default async function CatImage({ imageDetails }: CAT_IMAGE_PROPS) {
   //Get the correct image attributes needed for Image
   let catImage = getCatImageFromObj(imageDetails);
 
-  const url = `/?imageId=${catImage.routeId}`;
+  const url = catImage.routePath ? catImage.routePath : `/`;
   //const url = `/cat-images/${catImage.routeId}`;
 
   return (

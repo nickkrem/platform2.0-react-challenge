@@ -52,3 +52,15 @@ export async function getCatDetails(id: string): Promise<CAT_IMAGE> {
 
   return res.json();
 }
+
+export async function getCatByBreedId(id: string): Promise<CAT_IMAGE[]> {
+  const url = `${THE_CAT_API_SEARCH_URL}?limit=10&breed_ids=${id}`;
+  const res = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": `${API_KEY}`,
+    },
+  });
+
+  return res.json();
+}
