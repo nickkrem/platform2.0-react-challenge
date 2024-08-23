@@ -1,4 +1,4 @@
-import type { CAT_IMAGE, ORDER } from "./types";
+import type { BREED, CAT_IMAGE, ORDER } from "./types";
 
 //Get the secured API KEY from local env
 const API_KEY = process.env.API_KEY;
@@ -29,9 +29,21 @@ export async function getCatImages(
   return res.json();
 }
 
-export async function getCatBreeds() {
+export async function getCatBreeds(): Promise<BREED[]> {
   //const url = `${THE_CAT_API_URL_BREEDS}?limit=1`;
   const res = await fetch(THE_CAT_API_URL_BREEDS, {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": `${API_KEY}`,
+    },
+  });
+
+  return res.json();
+}
+
+export async function getCatDetails(id: string): Promise<CAT_IMAGE> {
+  const url = `${THE_CAT_API_URL_IMAGES}/${id}`;
+  const res = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
       "x-api-key": `${API_KEY}`,

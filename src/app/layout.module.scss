@@ -10,7 +10,7 @@
     "main"
     "footer";
 
-  main {
+  & > main {
     margin: 0 10%;
     display: flex;
     flex-direction: column;
@@ -19,11 +19,11 @@
     grid-area: main;
   }
 
-  header {
+  & > header {
     grid-area: header;
   }
 
-  footer {
+  & > footer {
     grid-area: footer;
     height: 100px;
   }

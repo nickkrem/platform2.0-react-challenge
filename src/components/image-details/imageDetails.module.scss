@@ -1,0 +1,47 @@
+@import "@/css/_vars";
+
+.imageDetails {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  li {
+    max-width: $imagesWidth;
+  }
+}
+
+.imageSection {
+  justify-self: right;
+}
+
+.imageContainer {
+  font-weight: 300;
+  font-size: 0.95rem;
+}
+
+.detailsSection {
+  display: grid;
+  place-items: start;
+}
+
+.detailsTable {
+  td:nth-of-type(odd) {
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  td:nth-of-type(even) {
+    text-align: left;
+  }
+}
+
+.image {
+  object-fit: cover;
+  width: $imagesMediumWidth;
+  height: $imagesMediumHeight;
+  border-radius: 5px;
+}

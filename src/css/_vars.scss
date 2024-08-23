@@ -4,10 +4,11 @@
 $screens: (
   mobile: 620px,
   tablet: 800px,
-  dasktop: 1200px,
+  desktop: 1200px,
 );
 
 $colorGreen: #0d2a1f;
+$colorDarkGreen: #3d8b3d;
 $colorLightGreen: #24ae7c;
 $colorLightGrey: #5c5c5c;
 $colorDark: #0d0f10;
@@ -17,3 +18,7 @@ $transitionDuration: 0.2s;
 $bannerHight: 372px;
 $imagesWidth: 150px;
 $imagesHeight: 150px;
+$imagesMediumWidth: 200px;
+$imagesMediumHeight: 200px;
+$breedsImagesWidth: 100px;
+$breedsImagesHeight: 100px;

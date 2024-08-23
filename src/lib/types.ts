@@ -48,6 +48,9 @@ export interface BREED {
 }
 
 export interface CAT_IMAGE extends IMAGE_TYPE {
+  alt?: string;
+  caption?: string;
+  routeId?: string;
   breeds?: BREED[];
 }
 
@@ -56,10 +59,33 @@ export interface IMAGE_LIST_PROPS {
 }
 
 export interface CAT_IMAGE_PROPS {
-  imageAttr: CAT_IMAGE | BREED;
+  imageDetails: CAT_IMAGE | BREED;
 }
 
 export interface MAIN_SECTION_PROPS {
   title: string;
   children: JSX.Element;
+}
+
+export interface MODAL_PROPS {
+  title: string;
+  children: JSX.Element;
+}
+
+export interface HOME_PAGE_PROPS {
+  params: {};
+  searchParams?: {
+    imageId?: string;
+  };
+}
+
+export interface BREEDS_PAGE_PROPS {
+  params: {};
+  searchParams?: {
+    breedId?: string;
+  };
+}
+
+export interface IMAGE_DETAILS_PROPS {
+  id: string;
 }
