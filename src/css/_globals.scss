@@ -46,3 +46,27 @@ button.btn {
 button.btn.round {
   border-radius: 30px;
 }
+
+button.pageButton {
+  display: flex;
+  width: $imagesWidth;
+  height: $imagesHeight;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+
+  div {
+    border: 5px solid #fff;
+    border-radius: 50%;
+    padding: 0 14px;
+    color: #fff;
+
+    &:hover {
+      color: $colorLightGreen;
+      border-color: $colorLightGreen;
+    }
+  }
+}

@@ -7,28 +7,40 @@ import type {
   FAVOURITES_BUTTON,
   PAGINATION_BUTTON_DATA,
 } from "@/lib/types";
-import { useActionState, useState } from "react";
+import { useActionState, useReducer, useState } from "react";
 import addFavourite from "@/serverActions/addFavourite";
 import { getImagesPerPage } from "@/serverActions/getImagesPerPage";
+import CatImage from "../cat-image-comp/catImage";
+import { useRouter } from "next/navigation";
+import { useFormState } from "react-dom";
+
+const initState: PAGINATION_BUTTON_DATA = {
+  page: 0,
+  images: [],
+  error: "",
+};
 
 export default function PaginationButton() {
-  const initState: PAGINATION_BUTTON_DATA = {
-    page: 0,
-    images: [],
-    error: "",
-  };
-  //const [state, action] = useActionState(getImagesPerPage, initState);
+  const router = useRouter();
+  //const [state, action] = useFormState(getImagesPerPage, initState);
+  const [state, action] = useActionState(getImagesPerPage, initState);
 
-  //console.log(state);
+  console.log(state);
 
   return (
-    //This component will be a part of a list
-    <li>
-      <form action="">
-        <button className={styles.pageButton}>
-          <div>+</div>
-        </button>
-      </form>
-    </li>
+    <>
+      {state.images.map((image) => {
+        <li key={image.id}>
+          <CatImage imageDetails={image} />
+        </li>;
+      })}
+      <li key="-1">
+        <form action={action}>
+          <button className="pageButton">
+            <div onClick={() => router.refresh()}>+</div>
+          </button>
+        </form>
+      </li>
+    </>
   );
 }

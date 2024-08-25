@@ -1,6 +1,7 @@
 "use server";
 
 import { CAT_IMAGE, ORDER, PAGINATION_BUTTON_DATA } from "@/lib/types";
+import { revalidatePath } from "next/cache";
 
 export async function getImagesPerPage(
   previousState: PAGINATION_BUTTON_DATA,
@@ -8,6 +9,8 @@ export async function getImagesPerPage(
 ): Promise<PAGINATION_BUTTON_DATA> {
   try {
     //Get cat images without the api key by default
+    console.log("EDWWWWWWWWWWWWWWWWWWWWWW");
+    console.log(previousState);
     const page = ++previousState.page;
     let url = `${process.env.THE_CAT_API_SEARCH_URL}?limit=${
       process.env.DEFAULT_LIMIT
