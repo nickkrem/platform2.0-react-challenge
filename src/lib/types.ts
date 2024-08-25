@@ -115,3 +115,11 @@ export type PAGINATION_BUTTON_DATA = {
   images: CAT_IMAGE[];
   error: string;
 };
+
+interface MENU_TAB {
+  href: string;
+  title: string;
+}
+export interface MENU_PROPS {
+  tabs: MENU_TAB[];
+}

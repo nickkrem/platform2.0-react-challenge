@@ -20,7 +20,9 @@ export default function RootLayout({
         <div className={styles.container}>
           <Header />
           <main>{children}</main>
-          <footer></footer>
+          <footer>
+            <span>&copy;2024 Copyright by Nick Kremmydas</span>
+          </footer>
         </div>
       </body>
     </html>

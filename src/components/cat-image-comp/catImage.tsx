@@ -5,12 +5,8 @@ import Image from "next/image";
 import styles from "./catImage.module.scss";
 import type { CAT_IMAGE_PROPS } from "@/lib/types";
 import { getCatImageFromObj } from "@/lib/utils";
-import { headers } from "next/headers";
 
 export default function CatImage({ imageDetails }: CAT_IMAGE_PROPS) {
-  //Get pathname from headers, but first we need to set it in the middleware
-  //See middleware.tsx
-  //const headersList = headers();
   //const pathname = headersList.get("x-pathname") || "/";
   const pathname = "";
 

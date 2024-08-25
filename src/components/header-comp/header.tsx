@@ -5,6 +5,21 @@ import { matemasie } from "@/lib/fonts";
 import Menu from "../menu-comp/menu";
 
 export default function Header() {
+  const menuTabs = [
+    {
+      href: "/",
+      title: "Home",
+    },
+    {
+      href: "/breeds",
+      title: "Cat Breeds",
+    },
+    {
+      href: "/favourites",
+      title: "My Favourites",
+    },
+  ];
+
   return (
     <header className={styles.header}>
       <Image
@@ -14,7 +29,7 @@ export default function Header() {
         placeholder="blur"
         sizes="100vw"
       />
-      <Menu />
+      <Menu tabs={menuTabs} />
       <p className={`${styles.logo} ${matemasie.className}`}>CatLover</p>
       <div className={styles.heroParagraph}>
         <h1>A site for genuine cat enthusiasts</h1>
