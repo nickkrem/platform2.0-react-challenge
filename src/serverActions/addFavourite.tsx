@@ -4,7 +4,9 @@ import { createAddFavouritesQueryBody, createCookie } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-export default async function addFavourite(imageId: string): Promise<string> {
+export default async function addFavourite(
+  imageId: string
+): Promise<{ id: string }> {
   let userId: string = "";
 
   const cookieStore = cookies();
@@ -30,9 +32,11 @@ export default async function addFavourite(imageId: string): Promise<string> {
     console.log(res);
     const returnData = await res.json();
     console.log(returnData);
+
     revalidatePath("/favourites");
-    return returnData.message;
+
+    return returnData;
   } catch (error) {
-    return "ERROR";
+    return { id: "ERROR" };
   }
 }

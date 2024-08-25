@@ -4,6 +4,7 @@ import styles from "./favouritesButton.module.scss";
 import type { FAVOURITES_BUTTON } from "@/lib/types";
 import { useEffect, useState } from "react";
 import addFavourite from "@/serverActions/addFavourite";
+import isFavourite from "@/serverActions/isFavourite";
 
 export default function FavouritesButton({
   imageId,
@@ -14,7 +15,27 @@ export default function FavouritesButton({
   const [pending, setPending] = useState(false);
   let text = "Add to favourites";
 
-  useEffect(() => {});
+  //Make a request when first rendering the button
+  // in order to check if image has already been added to favourites
+  useEffect(() => {
+    let requestIsCancelled = false;
+
+    const getIsFavourite = async () => {
+      const isFavouriteObj = await isFavourite(imageId);
+      console.log(isFavouriteObj);
+      setIsImageAddedToFavourites(isFavouriteObj.isFavourite);
+    };
+
+    //Just so to prevent possible unnecessary requests
+    //Couldn't use Signal on server action
+    //if (!requestIsCancelled) {
+    getIsFavourite();
+    //}
+
+    return () => {
+      requestIsCancelled = true;
+    };
+  }, []);
 
   if (pending) {
     text = "Adding to favourites...";

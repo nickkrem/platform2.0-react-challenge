@@ -1,12 +1,12 @@
 "use server";
 
 export default async function isFavourite(
-  favouriteId: string
+  imageId: string
 ): Promise<{ isFavourite: boolean }> {
   try {
-    const url = `${process.env.THE_CAT_API_URL_FAVOURITES}/${favouriteId}`;
+    const url = `${process.env.THE_CAT_API_URL_FAVOURITES}`;
+    console.log(url);
     const res = await fetch(url, {
-      method: "POST",
       headers: {
         "content-type": "application/json; charset=utf-8",
         "x-api-key": `${process.env.API_KEY}`,
@@ -14,13 +14,19 @@ export default async function isFavourite(
     });
 
     let data = await res.json();
+    console.log(data);
+
     if (data === "NOT_FOUND") {
       return { isFavourite: false };
     }
 
-    console.log("EDWWWWWWWWWWWWWWWW");
+    for (const favourite of data) {
+      if (favourite.image.id === imageId) {
+        return { isFavourite: true };
+      }
+    }
 
-    return { isFavourite: true };
+    return { isFavourite: false };
   } catch (error) {
     console.log(error);
     //if there is an error just return false
