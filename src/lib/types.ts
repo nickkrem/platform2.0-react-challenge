@@ -123,3 +123,7 @@ interface MENU_TAB {
 export interface MENU_PROPS {
   tabs: MENU_TAB[];
 }
+
+export interface DEVICES_MENU_PROPS extends MENU_PROPS {
+  pathname: string;
+}
