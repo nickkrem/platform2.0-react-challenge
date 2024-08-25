@@ -13,8 +13,6 @@ export default async function Favourites() {
     favouriteImages = await getFavourites(userId);
   }
 
-  // const imageId = searchParams?.imageId;
-
   return (
     <MainSection title="My latest favourites...">
       {userId ? (

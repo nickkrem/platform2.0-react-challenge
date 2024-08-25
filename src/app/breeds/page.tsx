@@ -23,8 +23,11 @@ export default async function Breeds({ searchParams }: BREEDS_PAGE_PROPS) {
       <MainSection title="Check out some cat breeds">
         <ImageList images={catBreeds} route="breeds" />
       </MainSection>
+      {/* We need two modals here, one for when clicking at a specific breed and 
+      a second one for when clicking at a specific cat of that breed.
+      Modals are initially hidden
+       */}
 
-      {/* Modal initially is hidden. See Modal component */}
       {breedId && (
         <Modal title="Breed members">
           <>
