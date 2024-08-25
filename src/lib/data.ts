@@ -18,10 +18,10 @@ export async function getCatImages(
   const res = await fetch(url);
 
   return res.json();
+  //TODO: Error Handling
 }
 
 export async function getCatBreeds(): Promise<BREED[]> {
-  //const url = `${THE_CAT_API_URL_BREEDS}?limit=1`;
   const res = await fetch(`${process.env.THE_CAT_API_URL_BREEDS}`, {
     headers: {
       "Content-Type": "application/json",
@@ -30,18 +30,28 @@ export async function getCatBreeds(): Promise<BREED[]> {
   });
 
   return res.json();
+  //TODO: Error Handling
 }
 
 export async function getCatDetails(id: string): Promise<CAT_IMAGE> {
   const url = `${process.env.THE_CAT_API_URL_IMAGES}/${id}`;
-  const res = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": `${process.env.API_KEY}`,
-    },
-  });
 
-  return res.json();
+  try {
+    const res = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": `${process.env.API_KEY}`,
+      },
+    });
+
+    return getJsonOrText(res);
+  } catch (e) {
+    return {
+      id: "",
+      url: "",
+      error: "Uknown error",
+    };
+  }
 }
 
 export async function getCatsByBreedId(id: string): Promise<CAT_IMAGE[]> {
@@ -54,6 +64,7 @@ export async function getCatsByBreedId(id: string): Promise<CAT_IMAGE[]> {
   });
 
   return res.json();
+  //TODO: Error Handling
 }
 
 export async function getFavourites(
@@ -70,4 +81,22 @@ export async function getFavourites(
 
   const data = await res.json();
   return data;
+  //TODO: Error Handling
+}
+
+async function getJsonOrText(res: Response) {
+  const headers = res.headers;
+  let error = "";
+
+  if (headers.get("content-type") === "text/plain; charset=utf-8") {
+    error = await res.text();
+
+    return {
+      id: "",
+      url: "",
+      error,
+    };
+  }
+
+  return res.json();
 }

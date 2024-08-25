@@ -4,8 +4,7 @@ import imageNotAvailable from "public/no-image-available.png";
 
 export function getCatImageFromObj(obj: CAT_IMAGE | BREED, pathname: string) {
   let catImage = obj as CAT_IMAGE;
-  catImage["routePath"] = `/?imageId=${catImage.id}`;
-  //catImage["routePath"] = `${pathname}?imageId=${catImage.id}`;
+  catImage["routePath"] = `${pathname}?imageId=${catImage.id}`;
 
   //Check if imageDetails is a BREED object. If so, get it's property image
   // We distinguish betwenn objects by the "name" property, which only exists
@@ -16,18 +15,12 @@ export function getCatImageFromObj(obj: CAT_IMAGE | BREED, pathname: string) {
 
     //There are cases where breeds do not have an image object. If so create it
     if (!catImage) {
-      catImage = {
-        id: "",
-        url: imageNotAvailable.src,
-        width: imageNotAvailable.width,
-        height: imageNotAvailable.height,
-      } as CAT_IMAGE;
+      catImage = getDefaultCatImage();
     }
 
     catImage["alt"] = breed.name;
     catImage["caption"] = breed.name;
     catImage["routePath"] = `/breeds/?breedId=${breed.id}`;
-    //catImage["routePath"] = `${pathname}?breedId=${breed.id}`;
   }
 
   return catImage;
@@ -43,6 +36,15 @@ export function createAddFavouritesQueryBody(imageId: string, userId: string) {
 function createUserID() {
   //For the purposes of this project we will get the current timestamp
   return Date.now().toString();
+}
+
+function getDefaultCatImage() {
+  return {
+    id: "",
+    url: imageNotAvailable.src,
+    width: imageNotAvailable.width,
+    height: imageNotAvailable.height,
+  } as CAT_IMAGE;
 }
 
 export function createCookie(cookieStore: ReadonlyRequestCookies) {

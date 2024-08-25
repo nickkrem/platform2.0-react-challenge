@@ -29,14 +29,13 @@ export default async function addFavourite(
       },
       body: data,
     });
-    console.log(res);
     const returnData = await res.json();
-    console.log(returnData);
 
     revalidatePath("/favourites");
 
     return returnData;
   } catch (error) {
+    //TODO: Better error handling
     return { id: "ERROR" };
   }
 }

@@ -5,10 +5,10 @@ import Image from "next/image";
 import styles from "./catImage.module.scss";
 import type { CAT_IMAGE_PROPS } from "@/lib/types";
 import { getCatImageFromObj } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export default function CatImage({ imageDetails }: CAT_IMAGE_PROPS) {
-  //const pathname = headersList.get("x-pathname") || "/";
-  const pathname = "";
+  const pathname = usePathname();
 
   //Get the correct image attributes needed for Image
   let catImage = getCatImageFromObj(imageDetails, pathname);

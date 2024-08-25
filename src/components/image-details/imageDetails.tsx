@@ -5,7 +5,8 @@ import styles from "./imageDetails.module.scss";
 
 export default async function ImageDetails({ id }: IMAGE_DETAILS_PROPS) {
   const catDetails = await getCatDetails(id);
-  let { url, breeds, width, height } = catDetails;
+
+  let { url, breeds, width, height, error } = catDetails;
   let breedDetails: BREED | null = null;
   let name = "";
 
@@ -14,7 +15,9 @@ export default async function ImageDetails({ id }: IMAGE_DETAILS_PROPS) {
     name = breedDetails.name;
   }
 
-  return (
+  return error ? (
+    <div>{error}</div>
+  ) : (
     <div className={styles.imageContainer}>
       <div className={styles.imageDetails}>
         <section className={styles.imageSection}>

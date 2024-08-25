@@ -5,7 +5,6 @@ export default async function isFavourite(
 ): Promise<{ isFavourite: boolean }> {
   try {
     const url = `${process.env.THE_CAT_API_URL_FAVOURITES}`;
-    console.log(url);
     const res = await fetch(url, {
       headers: {
         "content-type": "application/json; charset=utf-8",
@@ -14,7 +13,6 @@ export default async function isFavourite(
     });
 
     let data = await res.json();
-    console.log(data);
 
     if (data === "NOT_FOUND") {
       return { isFavourite: false };
@@ -30,6 +28,7 @@ export default async function isFavourite(
   } catch (error) {
     console.log(error);
     //if there is an error just return false
+    //TODO: Better error handling
     return { isFavourite: false };
   }
 }

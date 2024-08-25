@@ -1,9 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-import Error from "next/error";
-import { redirect } from "next/navigation";
-
 export default async function deleteFavourite(
   favouriteId: number
 ): Promise<string> {
@@ -17,8 +13,6 @@ export default async function deleteFavourite(
       },
     });
     const data = await res.json();
-
-    //revalidatePath("/favourites");
 
     return data.message;
   } catch (error) {

@@ -1,9 +1,9 @@
 export type ORDER = "ASC" | "DESC" | "RAND";
 
-interface IMAGE_TYPE {
+interface IMAGE_TYPE extends ERROR {
   id: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   url: string;
 }
 export interface BREED {
@@ -126,4 +126,8 @@ export interface MENU_PROPS {
 
 export interface DEVICES_MENU_PROPS extends MENU_PROPS {
   pathname: string;
+}
+
+export interface ERROR {
+  error: string;
 }
