@@ -28,9 +28,9 @@ export default function FavouritesButton({
 
     //Just so to prevent possible unnecessary requests
     //Couldn't use Signal on server action
-    //if (!requestIsCancelled) {
-    getIsFavourite();
-    //}
+    if (!requestIsCancelled) {
+      getIsFavourite();
+    }
 
     return () => {
       requestIsCancelled = true;

@@ -14,7 +14,7 @@ export default async function Home({ searchParams }: HOME_PAGE_PROPS) {
 
   return (
     <>
-      <MainSection title="Check out our cat images">
+      <MainSection title="Look at these beauties!!!">
         <ImageList images={catImages} />
       </MainSection>
       {/* Modal initially is hidden. See Modal component */}

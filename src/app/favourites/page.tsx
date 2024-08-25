@@ -16,7 +16,7 @@ export default async function Favourites() {
   // const imageId = searchParams?.imageId;
 
   return (
-    <MainSection title="Your latest favourite cat images">
+    <MainSection title="My latest favourites...">
       {userId ? (
         <ImageList images={favouriteImages} route="favourites" />
       ) : (

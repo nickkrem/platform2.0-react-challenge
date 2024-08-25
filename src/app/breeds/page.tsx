@@ -18,7 +18,7 @@ export default async function Breeds({ searchParams }: BREEDS_PAGE_PROPS) {
 
   return (
     <div className={styles.breedsContainer}>
-      <MainSection title="Check out our cat breeds">
+      <MainSection title="Check out some cat breeds">
         <ImageList images={catBreeds} route="breeds" />
       </MainSection>
 

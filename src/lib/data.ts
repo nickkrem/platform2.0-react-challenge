@@ -45,7 +45,7 @@ export async function getCatDetails(id: string): Promise<CAT_IMAGE> {
 }
 
 export async function getCatsByBreedId(id: string): Promise<CAT_IMAGE[]> {
-  const url = `${process.env.THE_CAT_API_SEARCH_URL}?limit=10&breed_ids=${id}`;
+  const url = `${process.env.THE_CAT_API_SEARCH_URL}?limit=100&breed_ids=${id}`;
   const res = await fetch(url, {
     headers: {
       "Content-Type": "application/json",

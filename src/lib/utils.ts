@@ -2,12 +2,6 @@ import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adap
 import type { CAT_IMAGE, BREED } from "./types";
 import imageNotAvailable from "public/no-image-available.png";
 
-/**
- *
- * @param {CAT_IMAGE | BREED} obj - This is either the breed details object or the image details object
- * @returns {CAT_IMAGE} - Returns an object that has all the necessary attributes to provide an Image
- *
- */
 export function getCatImageFromObj(obj: CAT_IMAGE | BREED, pathname: string) {
   let catImage = obj as CAT_IMAGE;
   catImage["routePath"] = `/?imageId=${catImage.id}`;
@@ -20,7 +14,7 @@ export function getCatImageFromObj(obj: CAT_IMAGE | BREED, pathname: string) {
     const breed = obj as BREED;
     catImage = breed.image as CAT_IMAGE;
 
-    //There are cases where breeds do not have an image object. If so create
+    //There are cases where breeds do not have an image object. If so create it
     if (!catImage) {
       catImage = {
         id: "",
