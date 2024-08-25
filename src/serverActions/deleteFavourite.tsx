@@ -18,6 +18,7 @@ export default async function deleteFavourite(
   } catch (error) {
     console.log(error);
     //if there is an error return server error message
+    //TODO: Better error handling
     return "ERROR";
   }
 }
