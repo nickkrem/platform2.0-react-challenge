@@ -1,19 +1,16 @@
 "use client";
 
-import { SyntheticEvent, useEffect, useRef, useState } from "react";
+import { SyntheticEvent, useEffect, useRef } from "react";
 import styles from "./modal.module.scss";
 import { MODAL_PROPS } from "@/lib/types";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import FavouritesButton from "../favourites-button/favouritesButton";
-import isFavourite from "@/serverActions/isFavourite";
 
 export default function Modal({ title, children }: MODAL_PROPS) {
   const dialogRef = useRef<null | HTMLDialogElement>(null);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-
-  const [isImageFavourite, setIsImageFavourite] = useState(false);
 
   const imageId = searchParams.get("imageId");
   const breedId = searchParams.get("breedId");
@@ -33,28 +30,6 @@ export default function Modal({ title, children }: MODAL_PROPS) {
     } else {
       closeDialog();
     }
-
-    //In this case we need to see if the specific image has been added to favourites
-    // if (imageId && pathname === "/") {
-    //   // const checkForFavourite = async () => {
-    //   //   const data = imageId
-    //   //     ? await isFavourite(imageId)
-    //   //     : { isFavourite: false };
-
-    //   //   if (data) {
-    //   //     setIsImageFavourite(data.isFavourite);
-    //   //   }
-    //   // };
-    //   startTransition(async () => {
-    //     const data = imageId
-    //       ? await isFavourite(imageId)
-    //       : { isFavourite: false };
-
-    //     if (data) {
-    //       setIsImageFavourite(data.isFavourite);
-    //     }
-    //   });
-    // }
 
     return () => {
       if (showModal) {
@@ -88,10 +63,7 @@ export default function Modal({ title, children }: MODAL_PROPS) {
         </header>
         <main>{children}</main>
         <footer>
-          {imageId && (
-            // We need to check the cookies in order to display appropriate html
-            <FavouritesButton imageId={imageId} />
-          )}
+          {imageId && <FavouritesButton imageId={imageId} />}
           <button onClick={closeDialog} className="btn round">
             Close
           </button>

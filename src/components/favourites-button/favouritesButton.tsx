@@ -1,9 +1,8 @@
 "use client";
 
-//import { createAddFavouritesQueryBody, createUserID } from "@/lib/utils";
 import styles from "./favouritesButton.module.scss";
 import type { FAVOURITES_BUTTON } from "@/lib/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import addFavourite from "@/serverActions/addFavourite";
 
 export default function FavouritesButton({
@@ -14,6 +13,8 @@ export default function FavouritesButton({
     useState(false);
   const [pending, setPending] = useState(false);
   let text = "Add to favourites";
+
+  useEffect(() => {});
 
   if (pending) {
     text = "Adding to favourites...";

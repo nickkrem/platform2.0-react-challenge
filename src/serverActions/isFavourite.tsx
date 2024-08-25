@@ -1,9 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-
-//Get the secured API KEY from local env
-
 export default async function isFavourite(
   favouriteId: string
 ): Promise<{ isFavourite: boolean }> {
@@ -23,12 +19,11 @@ export default async function isFavourite(
     }
 
     console.log("EDWWWWWWWWWWWWWWWW");
-    revalidatePath("/");
 
     return { isFavourite: true };
   } catch (error) {
     console.log(error);
-    //if there is an error return server error message
+    //if there is an error just return false
     return { isFavourite: false };
   }
 }

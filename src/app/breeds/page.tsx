@@ -19,7 +19,7 @@ export default async function Breeds({ searchParams }: BREEDS_PAGE_PROPS) {
   return (
     <div className={styles.breedsContainer}>
       <MainSection title="Check out our cat breeds">
-        <ImageList images={catBreeds} />
+        <ImageList images={catBreeds} route="breeds" />
       </MainSection>
 
       {/* Modal initially is hidden. See Modal component */}
