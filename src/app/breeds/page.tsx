@@ -1,5 +1,5 @@
 import ImageList from "@/components/image-list-comp/imageList";
-import { getCatBreeds, getCatByBreedId } from "@/lib/data";
+import { getCatBreeds, getCatsByBreedId } from "@/lib/data";
 import MainSection from "@/components/main-section/mainSection";
 import { BREEDS_PAGE_PROPS, CAT_IMAGE } from "@/lib/types";
 import Modal from "@/components/modal-comp/modal";
@@ -13,7 +13,7 @@ export default async function Breeds({ searchParams }: BREEDS_PAGE_PROPS) {
   let catImages: CAT_IMAGE[] = [];
 
   if (breedId) {
-    catImages = await getCatByBreedId(breedId);
+    catImages = await getCatsByBreedId(breedId);
   }
 
   return (
@@ -28,7 +28,7 @@ export default async function Breeds({ searchParams }: BREEDS_PAGE_PROPS) {
           {breedId && (
             // TODO: A better loading skeleton
             <Suspense fallback={<div>Loading...</div>}>
-              <ImageList images={catImages} />
+              <ImageList images={catImages} route="breeds" />
             </Suspense>
           )}
         </>

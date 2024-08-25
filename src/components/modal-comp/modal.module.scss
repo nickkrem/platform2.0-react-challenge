@@ -42,9 +42,8 @@
 
   footer {
     align-self: end;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
   }
-}
-
-button.round {
-  border-radius: 30px;
 }

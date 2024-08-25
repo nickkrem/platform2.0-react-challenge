@@ -1,3 +1,4 @@
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import type { CAT_IMAGE, BREED } from "./types";
 import imageNotAvailable from "public/no-image-available.png";
 
@@ -7,9 +8,10 @@ import imageNotAvailable from "public/no-image-available.png";
  * @returns {CAT_IMAGE} - Returns an object that has all the necessary attributes to provide an Image
  *
  */
-export function getCatImageFromObj(obj: CAT_IMAGE | BREED) {
+export function getCatImageFromObj(obj: CAT_IMAGE | BREED, pathname: string) {
   let catImage = obj as CAT_IMAGE;
   catImage["routePath"] = `/?imageId=${catImage.id}`;
+  //catImage["routePath"] = `${pathname}?imageId=${catImage.id}`;
 
   //Check if imageDetails is a BREED object. If so, get it's property image
   // We distinguish betwenn objects by the "name" property, which only exists
@@ -31,7 +33,42 @@ export function getCatImageFromObj(obj: CAT_IMAGE | BREED) {
     catImage["alt"] = breed.name;
     catImage["caption"] = breed.name;
     catImage["routePath"] = `/breeds/?breedId=${breed.id}`;
+    //catImage["routePath"] = `${pathname}?breedId=${breed.id}`;
   }
 
   return catImage;
+}
+
+export function createAddFavouritesQueryBody(imageId: string, userId: string) {
+  return JSON.stringify({
+    image_id: imageId,
+    sub_id: userId,
+  });
+}
+
+function createUserID() {
+  //For the purposes of this project we will get the current timestamp
+  return Date.now().toString();
+}
+
+export function createCookie(cookieStore: ReadonlyRequestCookies) {
+  const newUserId = createUserID();
+  setUserIdCookie(cookieStore, newUserId, "/");
+
+  return newUserId;
+}
+
+function setUserIdCookie(
+  cookieStore: ReadonlyRequestCookies,
+  newUserId: string,
+  path: string
+) {
+  cookieStore.set({
+    name: "userId",
+    value: newUserId,
+    httpOnly: true,
+    path,
+    maxAge: 60 * 60 * 24 * 365 * 1000,
+    expires: new Date(Date.now() + 60 * 60 * 24 * 365 * 1000),
+  });
 }

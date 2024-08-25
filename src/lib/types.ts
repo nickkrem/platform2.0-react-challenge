@@ -55,7 +55,8 @@ export interface CAT_IMAGE extends IMAGE_TYPE {
 }
 
 export interface IMAGE_LIST_PROPS {
-  images: CAT_IMAGE[] | BREED[];
+  images: CAT_IMAGE[] | BREED[] | FAVOURITE_IMAGE_DETAILS[];
+  route?: "home" | "breeds" | "favourites";
 }
 
 export interface CAT_IMAGE_PROPS {
@@ -83,9 +84,34 @@ export interface BREEDS_PAGE_PROPS {
   params: {};
   searchParams?: {
     breedId?: string;
+    imageId?: string;
   };
 }
-
 export interface IMAGE_DETAILS_PROPS {
   id: string;
 }
+
+export interface FAVOURITES_BUTTON {
+  imageId: string;
+  onClick?: () => void;
+}
+
+export interface FAVOURITE_IMAGE_DETAILS {
+  id: number;
+  user_id: string;
+  image_id: string;
+  sub_id: string;
+  image: {
+    url: string;
+  };
+}
+
+export interface FAVOURITE_IMAGE_PROPS {
+  favouriteDetails: FAVOURITE_IMAGE_DETAILS;
+}
+
+export type PAGINATION_BUTTON_DATA = {
+  page: number;
+  images: CAT_IMAGE[];
+  error: string;
+};

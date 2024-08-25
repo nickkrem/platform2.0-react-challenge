@@ -26,7 +26,7 @@ img {
   display: block;
 }
 
-button.closeBtn {
+button.btn {
   background-color: $colorLightGreen;
   border: 2px solid $colorDarkGreen;
   border-radius: 10px;
@@ -41,4 +41,8 @@ button.closeBtn {
     background-color: rgb(61, 139, 61);
     border-color: $colorLightGreen;
   }
+}
+
+button.btn.round {
+  border-radius: 30px;
 }
