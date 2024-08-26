@@ -64,6 +64,7 @@ function setUserIdCookie(
     value: newUserId,
     httpOnly: true,
     path,
+    secure: true,
     maxAge: 60 * 60 * 24 * 365 * 1000,
     expires: new Date(Date.now() + 60 * 60 * 24 * 365 * 1000),
   });

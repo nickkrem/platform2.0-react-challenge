@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./desktopMenu.module.scss";
 import { DEVICES_MENU_PROPS } from "@/lib/types";
 
-export default function Menu({ tabs, pathname }: DEVICES_MENU_PROPS) {
+export default function DesktopMenu({ tabs, pathname }: DEVICES_MENU_PROPS) {
   return (
     <nav className={styles.nav}>
       <ul>
