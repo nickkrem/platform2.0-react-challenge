@@ -31,16 +31,16 @@ export default async function Breeds({ searchParams }: BREEDS_PAGE_PROPS) {
       {breedId && (
         <Modal title="Breed members">
           <>
-            {breedId && (
+            {
               // TODO: A better loading skeleton
               <Suspense fallback={<div>Loading...</div>}>
                 {catImages.length === 0 ? (
-                  <div>Not a valid breedId</div>
+                  <div>No cat images for this breed id</div>
                 ) : (
                   <ImageList images={catImages} route="breeds" />
                 )}
               </Suspense>
-            )}
+            }
           </>
         </Modal>
       )}
@@ -48,12 +48,12 @@ export default async function Breeds({ searchParams }: BREEDS_PAGE_PROPS) {
       {imageId && (
         <Modal title="Breed Details">
           <>
-            {imageId && (
+            {
               // TODO: A better loading skeleton
               <Suspense fallback={<div>Loading...</div>}>
-                <ImageDetails id={imageId} />
+                <ImageDetails id={imageId} catImages={catImages} />
               </Suspense>
-            )}
+            }
           </>
         </Modal>
       )}

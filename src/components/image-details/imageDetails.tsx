@@ -1,16 +1,19 @@
-import { getCatDetails } from "@/lib/data";
+import { getCatDetails } from "@/lib/utils";
 import Image from "next/image";
 import type { BREED, IMAGE_DETAILS_PROPS } from "@/lib/types";
 import styles from "./imageDetails.module.scss";
 
-export default async function ImageDetails({ id }: IMAGE_DETAILS_PROPS) {
-  const catDetails = await getCatDetails(id);
+export default async function ImageDetails({
+  id,
+  catImages,
+}: IMAGE_DETAILS_PROPS) {
+  const catDetails = getCatDetails(id, catImages);
 
   let { url, breeds, width, height, error } = catDetails;
   let breedDetails: BREED | null = null;
   let name = "";
 
-  if (breeds) {
+  if (breeds && breeds.length > 0) {
     breedDetails = breeds[0];
     name = breedDetails.name;
   }

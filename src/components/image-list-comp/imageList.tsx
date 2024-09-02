@@ -13,6 +13,7 @@ import PaginationButton from "../pagination-button/paginationButton";
 export default function ImageList({
   images,
   route = "home",
+  onNextPage,
 }: IMAGE_LIST_PROPS) {
   return (
     <ul className={styles.imageList}>
@@ -41,7 +42,7 @@ export default function ImageList({
           </li>
         );
       })}
-      {route === "home" && <PaginationButton />}
+      {route === "home" && <PaginationButton onNextPage={onNextPage} />}
     </ul>
   );
 }

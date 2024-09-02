@@ -1,13 +1,28 @@
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import type { CAT_IMAGE, BREED } from "./types";
 import imageNotAvailable from "public/no-image-available.png";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
-export function getCatImageFromObj(obj: CAT_IMAGE | BREED, pathname: string) {
+export function getCatImageFromObj(
+  obj: CAT_IMAGE | BREED,
+  pathname: string,
+  searchParams: ReadonlyURLSearchParams
+) {
   let catImage = obj as CAT_IMAGE;
   catImage["routePath"] = `${pathname}?imageId=${catImage.id}`;
 
+  if (
+    pathname == "/breeds" &&
+    searchParams.size > 0 &&
+    searchParams.get("breedId")
+  ) {
+    catImage["routePath"] = `${pathname}?breedId=${searchParams.get(
+      "breedId"
+    )}&imageId=${catImage.id}`;
+  }
+
   //Check if imageDetails is a BREED object. If so, get it's property image
-  // We distinguish betwenn objects by the "name" property, which only exists
+  // We distinguish between objects by the "name" property, which only exists
   // in the BREED object
   if ((obj as BREED).name) {
     const breed = obj as BREED;
@@ -24,6 +39,20 @@ export function getCatImageFromObj(obj: CAT_IMAGE | BREED, pathname: string) {
   }
 
   return catImage;
+}
+
+export function getCatDetails(id: string, catImages: CAT_IMAGE[]): CAT_IMAGE {
+  for (const catImage of catImages) {
+    if (id === catImage.id) {
+      return catImage;
+    }
+  }
+
+  return {
+    id: "",
+    url: "",
+    error: `There is no image with id: ${id}`,
+  };
 }
 
 export function createAddFavouritesQueryBody(imageId: string, userId: string) {

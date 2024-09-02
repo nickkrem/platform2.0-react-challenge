@@ -1,6 +1,11 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useSearchParams, usePathname } from "next/navigation";
-import { MutableRefObject, SyntheticEvent, useEffect } from "react";
+import {
+  MutableRefObject,
+  SyntheticEvent,
+  useCallback,
+  useEffect,
+} from "react";
 
 export default function useModal(
   dialogRef: MutableRefObject<HTMLDialogElement | null>,
@@ -24,6 +29,21 @@ export default function useModal(
     //case 3
     (imageId && pathname === "/breeds");
 
+  const closeDialog = useCallback(() => {
+    dialogRef.current?.close();
+  }, [dialogRef]);
+  // function closeDialog() {
+  //   dialogRef.current?.close();
+  // }
+
+  const showDialog = useCallback(() => {
+    dialogRef.current?.showModal();
+  }, [dialogRef]);
+
+  // function showDialog() {
+  //   dialogRef.current?.showModal();
+  // }
+
   useEffect(() => {
     if (showModal) {
       showDialog();
@@ -38,7 +58,7 @@ export default function useModal(
         showDialog();
       }
     };
-  }, [showModal]);
+  }, [showModal, closeDialog, showDialog]);
 
   function onCloseDialog(e: SyntheticEvent<HTMLDialogElement, Event>) {
     if (!router) return;
@@ -49,17 +69,13 @@ export default function useModal(
       router.push(pathname);
     }
 
-    if (pathname === "/breeds" && breedId) {
-      router.push(`${pathname}`);
+    if (pathname === "/breeds" && breedId && imageId) {
+      router.push(`${pathname}?breedId=${breedId}`);
     }
-  }
 
-  function closeDialog() {
-    dialogRef.current?.close();
-  }
-
-  function showDialog() {
-    dialogRef.current?.showModal();
+    if (pathname === "/breeds" && breedId && !imageId) {
+      router.push(pathname);
+    }
   }
 
   return {

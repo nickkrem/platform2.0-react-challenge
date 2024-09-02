@@ -54,7 +54,7 @@ export interface CAT_IMAGE extends IMAGE_TYPE {
   breeds?: BREED[];
 }
 
-export interface IMAGE_LIST_PROPS {
+export interface IMAGE_LIST_PROPS extends PAGINATION_BUTTON_PROPS {
   images: CAT_IMAGE[] | BREED[] | FAVOURITE_IMAGE_DETAILS[];
   route?: "home" | "breeds" | "favourites";
 }
@@ -74,10 +74,7 @@ export interface MODAL_PROPS {
 }
 
 export interface HOME_PAGE_PROPS {
-  params: {};
-  searchParams?: {
-    imageId?: string;
-  };
+  catImages: CAT_IMAGE[];
 }
 
 export interface BREEDS_PAGE_PROPS {
@@ -87,7 +84,8 @@ export interface BREEDS_PAGE_PROPS {
     imageId?: string;
   };
 }
-export interface IMAGE_DETAILS_PROPS {
+
+export interface IMAGE_DETAILS_PROPS extends HOME_PAGE_PROPS {
   id: string;
 }
 
@@ -130,4 +128,8 @@ export interface DEVICES_MENU_PROPS extends MENU_PROPS {
 
 export interface ERROR {
   error: string;
+}
+
+export interface PAGINATION_BUTTON_PROPS {
+  onNextPage?: (catImages: CAT_IMAGE[]) => void;
 }
