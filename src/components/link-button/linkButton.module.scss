@@ -1,0 +1,10 @@
+@import "@/css/_vars";
+
+.linkButton {
+  text-align: center;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

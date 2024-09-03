@@ -15,7 +15,9 @@ export async function getCatImages(
     url += `&api_key=${process.env.API_KEY}`;
   }
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    next: { revalidate: 3600 },
+  });
 
   return res.json();
   //TODO: Error Handling

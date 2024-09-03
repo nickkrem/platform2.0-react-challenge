@@ -26,7 +26,7 @@ export default function useFavouritesButton(imageId: string) {
     return () => {
       requestIsCancelled = true;
     };
-  }, []);
+  }, [imageId]);
 
   if (pending) {
     text = "Adding to favourites...";
@@ -41,6 +41,6 @@ export default function useFavouritesButton(imageId: string) {
     isImageAddedToFavourites,
     text,
     setPending,
-    setIsImageAddedToFavourites
-  }
+    setIsImageAddedToFavourites,
+  };
 }

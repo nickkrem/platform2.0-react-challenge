@@ -45,7 +45,12 @@ export default function MobileMenu({ tabs, pathname }: DEVICES_MENU_PROPS) {
 
             return (
               <li key={tab.href} className={`${isActive && styles.isActive}`}>
-                <Link href={tab.href}>{tab.title}</Link>
+                <Link
+                  href={tab.href}
+                  prefetch={tab.href === "/favourites" ? false : undefined}
+                >
+                  {tab.title}
+                </Link>
               </li>
             );
           })}

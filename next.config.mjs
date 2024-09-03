@@ -11,6 +11,12 @@ const nextConfig = {
       },
     ],
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+      hmrRereshes: true,
+    },
+  },
 };
 
 export default nextConfig;
