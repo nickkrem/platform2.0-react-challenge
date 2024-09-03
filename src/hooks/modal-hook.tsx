@@ -60,7 +60,7 @@ export default function useModal(
     };
   }, [showModal, closeDialog, showDialog]);
 
-  function onCloseDialog(e: SyntheticEvent<HTMLDialogElement, Event>) {
+  function onCloseDialog() {
     if (!router) return;
 
     //We have to check where this modal came from

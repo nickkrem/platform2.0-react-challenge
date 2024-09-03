@@ -13,7 +13,8 @@ const nextConfig = {
   },
   logging: {
     fetches: {
-      hmrRefreshes: true,
+      fullUrl: true,
+      hmrRereshes: true,
     },
   },
 };
