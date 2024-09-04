@@ -16,7 +16,7 @@ export default function DesktopMenu({ tabs, pathname }: DEVICES_MENU_PROPS) {
           if (tab.href === "/favourites") classLink = styles.favouritesLink;
 
           return (
-            <li key={tab.href} className={`${classLink}`}>
+            <li key={tab.href} className={`${isActive && styles.isActive}`}>
               {/* We need to do the following trick in order to invalidate client cache
                 on favourites page. We manually opt out of client caching by using our own LinkButton
                 component. Also see LinkButton component... We need to do this because revalidating
@@ -24,19 +24,9 @@ export default function DesktopMenu({ tabs, pathname }: DEVICES_MENU_PROPS) {
                 cache and not just the "favourites" route.
               */}
               {tab.href === "/favourites" ? (
-                <LinkButton
-                  href="/favourites"
-                  className={`${isActive && styles.isActive}`}
-                >
-                  {tab.title}
-                </LinkButton>
+                <LinkButton href="/favourites">{tab.title}</LinkButton>
               ) : (
-                <Link
-                  href={tab.href}
-                  className={`${isActive && styles.isActive}`}
-                >
-                  {tab.title}
-                </Link>
+                <Link href={tab.href}>{tab.title}</Link>
               )}
             </li>
           );

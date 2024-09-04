@@ -53,19 +53,9 @@ export default function MobileMenu({ tabs, pathname }: DEVICES_MENU_PROPS) {
                 cache and not just the "favourites" route.
               */}
                 {tab.href === "/favourites" ? (
-                  <LinkButton
-                    href="/favourites"
-                    className={`${isActive && styles.isActive}`}
-                  >
-                    {tab.title}
-                  </LinkButton>
+                  <LinkButton href="/favourites">{tab.title}</LinkButton>
                 ) : (
-                  <Link
-                    href={tab.href}
-                    className={`${isActive && styles.isActive}`}
-                  >
-                    {tab.title}
-                  </Link>
+                  <Link href={tab.href}>{tab.title}</Link>
                 )}
               </li>
             );

@@ -30,6 +30,8 @@ export default function FavouriteImage({
           className={styles.favouriteImage}
           width={500}
           height={500}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mO0Tvd1ZyACMI4qpK9CAJcxDCc4AjJpAAAAAElFTkSuQmCC"
         />
         {pending && (
           <div className={styles.deletingOverlay}>

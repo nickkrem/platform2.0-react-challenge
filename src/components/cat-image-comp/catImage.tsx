@@ -25,6 +25,8 @@ export default function CatImage({ imageDetails }: CAT_IMAGE_PROPS) {
           className={styles.catImage}
           width={catImage.width}
           height={catImage.height}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mO0Tvd1ZyACMI4qpK9CAJcxDCc4AjJpAAAAAElFTkSuQmCC"
         />
         {catImage.caption && <figcaption>{catImage.caption}</figcaption>}
       </figure>

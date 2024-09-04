@@ -1,10 +1,13 @@
 @import "@/css/_vars";
+@import "@/css/_mixins";
 
 .linkButton {
-  text-align: center;
-
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
+
+    @include mediaScreen(mobile) {
+      text-decoration: underline;
+    }
   }
 }

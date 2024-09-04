@@ -9,12 +9,12 @@ import styles from "./linkButton.module.scss";
 export function LinkButton({
   children,
   href,
-  className,
+  className = "",
   ...props
 }: {
   children: React.ReactNode;
   href: string;
-  className: string | undefined;
+  className?: string | undefined;
 }) {
   const router = useRouter();
   return (
