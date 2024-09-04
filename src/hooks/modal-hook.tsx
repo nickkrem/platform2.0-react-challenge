@@ -1,11 +1,6 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useSearchParams, usePathname } from "next/navigation";
-import {
-  MutableRefObject,
-  SyntheticEvent,
-  useCallback,
-  useEffect,
-} from "react";
+import { MutableRefObject, useCallback, useEffect } from "react";
 
 export default function useModal(
   dialogRef: MutableRefObject<HTMLDialogElement | null>,

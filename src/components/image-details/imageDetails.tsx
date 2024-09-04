@@ -3,10 +3,7 @@ import Image from "next/image";
 import type { BREED, IMAGE_DETAILS_PROPS } from "@/lib/types";
 import styles from "./imageDetails.module.scss";
 
-export default async function ImageDetails({
-  id,
-  catImages,
-}: IMAGE_DETAILS_PROPS) {
+export default function ImageDetails({ id, catImages }: IMAGE_DETAILS_PROPS) {
   const catDetails = getCatDetails(id, catImages);
 
   let { url, breeds, width, height, error } = catDetails;

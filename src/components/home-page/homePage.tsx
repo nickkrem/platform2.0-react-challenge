@@ -38,9 +38,7 @@ export default function HomePage({ catImages }: HOME_PAGE_PROPS) {
         <>
           {imageId && (
             // TODO: A better loading skeleton
-            <Suspense fallback={<div>Loading...</div>}>
-              <ImageDetails id={imageId} catImages={homePageImages} />
-            </Suspense>
+            <ImageDetails id={imageId} catImages={homePageImages} />
           )}
         </>
       </Modal>
