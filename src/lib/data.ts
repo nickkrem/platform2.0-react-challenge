@@ -16,7 +16,7 @@ export async function getCatImages(
   }
 
   const res = await fetch(url, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 0 },
   });
 
   return res.json();
