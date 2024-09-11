@@ -25,6 +25,7 @@ export async function getCatImages(
 
 export async function getCatBreeds(): Promise<BREED[]> {
   const res = await fetch(`${process.env.THE_CAT_API_URL_BREEDS}`, {
+    cache: "force-cache",
     headers: {
       "Content-Type": "application/json",
       "x-api-key": `${process.env.API_KEY}`,
