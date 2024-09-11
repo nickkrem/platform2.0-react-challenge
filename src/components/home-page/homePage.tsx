@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import ImageDetails from "../image-details/imageDetails";
 import ImageList from "../image-list-comp/imageList";
 import MainSection from "../main-section/mainSection";
