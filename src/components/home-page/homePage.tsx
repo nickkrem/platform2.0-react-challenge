@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ImageDetails from "../image-details/imageDetails";
 import ImageList from "../image-list-comp/imageList";
 import MainSection from "../main-section/mainSection";
@@ -24,9 +24,13 @@ export default function HomePage({ catImages }: HOME_PAGE_PROPS) {
 
   //Pass an onNextPage function down to the PaginationButton component so as to
   //get the next images and add them to the state
-  function onNextPage(nextImages: CAT_IMAGE[]) {
-    setHomePageImages([...homePageImages, ...nextImages]);
-  }
+  // function onNextPage(nextImages: CAT_IMAGE[]) {
+  //   setHomePageImages([...homePageImages, ...nextImages]);
+  // }
+
+  const onNextPage = useCallback((nextImages: CAT_IMAGE[]) => {
+    setHomePageImages((homePageImages) => [...homePageImages, ...nextImages]);
+  }, []);
 
   return (
     <>

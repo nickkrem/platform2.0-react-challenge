@@ -24,7 +24,7 @@ export default function PaginationButton({
     if (onNextPage) onNextPage(state.images);
     //I want to run onNextPage only when state is updated
     //onNextPage should not be a dependency here
-  }, [state]);
+  }, [state, onNextPage]);
 
   return (
     <li key="-1">
